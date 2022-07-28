@@ -12,10 +12,10 @@ App para customizar sua mensagem enviar,com cor de moldura,texto e fundo
 
 ```swift
 if let reference = self as? PickerColorDelegate{
-			let pickerColor = storyboard?.instantiateViewController(withIdentifier:"PickerColorController" ) as! PickerColorController
-			pickerColor.modalPresentationStyle = .overCurrentContext
-			pickerColor.pickerColorDelegate  = reference
-			present(pickerColor, animated: true, completion: nil)
+   let pickerColor = storyboard?.instantiateViewController(withIdentifier:"PickerColorController" ) as! PickerColorController
+   pickerColor.modalPresentationStyle = .overCurrentContext 
+   pickerColor.pickerColorDelegate  = reference
+   present(pickerColor, animated: true, completion: nil)
 			
 }
 ```
@@ -30,25 +30,25 @@ if let reference = self as? PickerColorDelegate{
 //classe base
 class BaseViewController: UIViewController {
 	
-	@IBOutlet weak var lbColor: UILabel!
+  @IBOutlet weak var lbColor: UILabel!
 	
-	var message: Message!
+  var message: Message!
 	
-	override func viewDidLoad() {
-		super.viewDidLoad()
+   override func viewDidLoad() {
+     super.viewDidLoad()
 		
-	}
+   }
 	
 	
-	@IBAction func changeColor(_ sender:UIButton) {
-		if let reference = self as? PickerColorDelegate{
-			let pickerColor = storyboard?.instantiateViewController(withIdentifier:"PickerColorController" ) as! PickerColorController
-			pickerColor.modalPresentationStyle = .overCurrentContext
-			pickerColor.pickerColorDelegate  = reference
-			present(pickerColor, animated: true, completion: nil)
+   @IBAction func changeColor(_ sender:UIButton) {
+	if let reference = self as? PickerColorDelegate{
+	let pickerColor = storyboard?.instantiateViewController(withIdentifier:"PickerColorController" ) as! PickerColorController
+	pickerColor.modalPresentationStyle = .overCurrentContext
+	pickerColor.pickerColorDelegate  = reference
+	present(pickerColor, animated: true, completion: nil)
 			
-		}
 	}
+   }
 	
 	
 }
@@ -56,26 +56,25 @@ class BaseViewController: UIViewController {
 //outras classes
 class MessageViewController: BaseViewController {
 	
-	@IBOutlet weak var tfMessage: UITextField!
+  @IBOutlet weak var tfMessage: UITextField!
 	
-	override func viewDidLoad() {
-		super.viewDidLoad()
-		tfMessage.delegate = self
-		message = Message()
-	}
+    override func viewDidLoad() {
+	super.viewDidLoad()
+	tfMessage.delegate = self
+	message = Message()
+    }
 	
-	override func viewWillAppear(_ animated: Bool) {
-		//para teclado ganhar  o foco
-		tfMessage.becomeFirstResponder()
-		navigationController?.setNavigationBarHidden(false, animated: true)
-	}
+    override func viewWillAppear(_ animated: Bool) {
+	//para teclado ganhar  o foco
+	tfMessage.becomeFirstResponder()
+	navigationController?.setNavigationBarHidden(false, animated: true)
+    }
 	
-	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-		if segue.identifier == "screenColorSegue" {
-			let destion = segue.destination as! ScreenColorViewController
-			//estou enviando a struct
-			destion.message = message
-		}
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+	if segue.identifier == "screenColorSegue" {
+	   let destion = segue.destination as! ScreenColorViewController
+	    destion.message = message
+	  }
 	}
 		
 	
@@ -96,17 +95,17 @@ class MessageViewController: BaseViewController {
 ```swift
 
  //este ciclo e assim que a tela ira ser criada
-	override func viewWillAppear(_ animated: Bool) {
-		//para teclado ganhar  o foco
-		tfMessage.becomeFirstResponder()
-		navigationController?.setNavigationBarHidden(false, animated: true)
-	}
+ override func viewWillAppear(_ animated: Bool) {
+      //para teclado ganhar  o foco
+      tfMessage.becomeFirstResponder()
+     navigationController?.setNavigationBarHidden(false, animated: true)
+ }
   
  // para apagar o titulo do buttom navigation
  extension UINavigationController {
-	open override func viewWillLayoutSubviews() {
-		navigationBar.topItem?.backButtonDisplayMode = .minimal
-	}
+    open override func viewWillLayoutSubviews() {
+	navigationBar.topItem?.backButtonDisplayMode = .minimal
+   }
  }
  
  
