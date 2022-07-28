@@ -1,5 +1,5 @@
 # Your Message
-App para customizar sua mensagem enviar,com cor de moldura,texto e fundo
+App para customizar sua mensagem com cor de moldura,cor no texto e fundo
 
 
 ## Feature
