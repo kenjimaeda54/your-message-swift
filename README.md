@@ -109,7 +109,7 @@ class MessageViewController: BaseViewController {
  }
  
  
- / Xcode now supports //MARK:, //TODO: and //FIXME landmarks to annotate your code and lists them in the jump bar. (14768427)!
+ // Xcode now supports //MARK:, //TODO: and //FIXME landmarks to annotate your code and lists them in the jump bar. (14768427)!
 
  //TODO: - This new feature xcode TODO
 
